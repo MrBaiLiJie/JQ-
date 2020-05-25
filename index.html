@@ -3,11 +3,19 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta http-equiv=X-UA-Compatiblecontent=IE=9 />
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/wenjuan_ht.css">
 	<script src="js/jquery-1.8.0.min.js"></script>
 	<script>
 		$(document).ready(function (e) {
+			// var a = 1;
+			// var newArray = [];
+			// for (var i = 0; i < 5; i++) {
+			// 	newArray.push(a)
+
+			// };
+			//          console.log(newArray)
 			$(".btwen_text").val("题目");
 			$(".btwen_text_dx").val("单选题目");
 			$(".btwen_text_duox").val("多选题目");
@@ -22,7 +30,8 @@
 
 			//鼠标移上去显示按钮
 			$(".movie_box").hover(function () {
-				var html_cz = "<div class='kzqy_czbut'><a href='javascript:void(0)'  class='bianji'>编辑</a><a href='javascript:void(0)' class='del' >删除</a></div>"
+				// alert(1111)
+				var html_cz = "<div class='kzqy_czbut'><a href='javascript:void(0)'  class='bianji'>修改</a><a href='javascript:void(0)' class='del' >删除</a></div>"
 				// $(this).css({"border":"1px solid #0099ff"}); 
 				$(this).children(".wjdc_list").after(html_cz);
 			}, function () {
@@ -84,11 +93,11 @@
 					var bjjs = 0;
 					$(this).parent(".kzqy_czbut").parent(".movie_box").find(".wjdc_list").children("li").each(function () {
 						//可选框框
-						// var ktksfcz = $(this).find("input").hasClass("wenb_input");
-						// if (ktksfcz) {
-						// 	var jsxz_kk = $(this).index();
-						// 	dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(jsxz_kk - 1).find("label").remove();
-						// }
+						var ktksfcz = $(this).find("input").hasClass("wenb_input");
+						if (ktksfcz) {
+							var jsxz_kk = $(this).index();
+							dx_rq.find(".title_itram").children(".kzjxx_iteam").eq(jsxz_kk - 1).find("label").remove();
+						}
 						//题目选项
 						var texte_val = $(this).find("span").text();
 						// console.log(texte_val)
@@ -130,40 +139,29 @@
 				}
 				//填空题目
 				if (title == 2) {
+
 					dx_rq.show().html(tktm);
 					//赋值文本框 
 					//题目标题
 					var texte_bt_val = $(this).parent(".kzqy_czbut").parent(".movie_box").find(".wjdc_list").children("li").eq(0).find(".tm_btitlt").children(".btwenzi").text();
 					dx_rq.find(".btwen_text").val(texte_bt_val);
-					// var dx_newHtml = document.createElement('div');
-					// 	dx_newHtml = '<ul class="wjdc_list dx_newli">' +
-					// 		'<li>' +
-					// 		'<label>' +
-					// 		'<textarea name="" cols="" rows="" class="input_wenbk btwen_text btwen_text_dx"   this.value=""" > ' +
-					// 		'</textarea>' +
-					// 		'</label>' +
-					// 		'</li>' +
-					// 		'</ul>' +
-					// 		'<div class="dx_box" data-t="2">' +
-					// 		'</div>'
-					// 	$(".yd_box").append("<div class='movie_box'>" + dx_newHtml
-					// 		+ "</div>")
+
 				}
 				//矩阵题目
-				if (title == 3) {
-					dx_rq.show().html(jztm);
-				}
+				// if (title == 3) {
+				// 	dx_rq.show().html(jztm);
+				// }
 			});
 			// 编辑 创建 新的题目
 			$(".swcbj_but_new").live("click",
 				function () {
-					console.log(1111)
+					// console.log(1111)
 					//编辑内容的容器
 					// console.log($(this))
 					var dx_rq = $(this).parent(".bjqxwc_box").parent();
 					// console.log(dx_rq)
 					var title_data = dx_rq.attr("data-t");
-					console.log(title_data)
+					// console.log(title_data)
 					// 单选
 					if (title_data == 0) {
 						//题目选项的个数
@@ -215,7 +213,7 @@
 							'</ul>' +
 							'<div class="dx_box" data-t="0">' +
 							'</div>'
-						$(".yd_box").append("<div class='movie_box'>" + dx_newHtml
+						$(".yd_box").append("<div class='movie_box' name = '2'>" + dx_newHtml
 							+ "</div>")
 
 					};
@@ -235,7 +233,7 @@
 						var bjjs = 0;
 						// console.log($(this).parent(".bjqxwc_box").parent(".xxk_xzqh_box").children(".title_itram").find(".kzjxx_iteam").children("input_wenbk"))
 						$(this).parent(".bjqxwc_box").parent(".xxk_xzqh_box").children(".title_itram").find(".kzjxx_iteam").children("input_wenbk").prevObject.each(function () {
-							console.log(11111)
+							// console.log(11111)
 							//可选框框
 							// var ktksfcz = $(this).find("input").hasClass("wenb_input");
 							// if (ktksfcz) {
@@ -270,7 +268,7 @@
 							'</ul>' +
 							'<div class="dx_box" data-t="1">' +
 							'</div>'
-						$(".yd_box").append("<div class='movie_box'>" + dx_newHtml
+						$(".yd_box").append("<div class='movie_box' name = '3' >" + dx_newHtml
 							+ "</div>")
 
 					};
@@ -278,10 +276,10 @@
 					if (title_data == 2) {
 						//题目标题
 						var texte_bt_val_bj = dx_rq.find(".btwen_text").val();
-						console.log(texte_bt_val_bj);
+						// console.log(texte_bt_val_bj);
 						// console.log(dx_newLi)
 						var dx_newHtml = document.createElement('div');
-						dx_newHtml = '<ul class="wjdc_list dx_newli">' +
+						dx_newHtml = '<ul class="wjdc_list dx_newul">' +
 							'<li>' +
 							'<div class="tm_btitlt">' +
 							'<i class="nmb"></i>' +
@@ -297,7 +295,7 @@
 							'</ul>' +
 							'<div class="dx_box" data-t="2">' +
 							'</div>'
-						$(".yd_box").append("<div class='movie_box'>" + dx_newHtml
+						$(".yd_box").append("<div class='movie_box' name = '4' >" + dx_newHtml
 							+ "</div>")
 
 					};
@@ -314,7 +312,7 @@
 					});
 				});
 			//增加选项  
-			$(".zjxx").live("click", function () {
+			$(".zjxx").click(function () {
 				var zjxx_html = $(this).prev(".title_itram").children(".kzjxx_iteam").html();
 				$(this).prev(".title_itram").append("<div class='kzjxx_iteam'>" + zjxx_html + "</div>");
 			});
@@ -330,15 +328,36 @@
 				}
 			});
 			//取消编辑
-			$(".dx_box .qxbj_but").live("click", function () {
+			$(".dx_box .qxbj_but").click(function () {
 				$(this).parent(".bjqxwc_box").parent(".dx_box").empty().hide();
 				$(".movie_box").css({ "border": "1px solid #fff" });
 				$(".kzqy_czbut").remove();
 				// 			  
 			});
 
-			//完成编辑（编辑）
-			$(".swcbj_but").live("click", function () {
+			//完成修改（修改）
+			$(".swcbj_but").click(function () {
+				// $(this).parent(".bjqxwc_box").parent(".dx_box").parent(".movie_box").empty();
+				var dx_rq = $(this).parent(".bjqxwc_box").parent();
+				var title = dx_rq.attr("data-t");
+				// console.log(title)
+				var dx_newDiv = $(this).parent(".bjqxwc_box").parent(".dx_box").parent(".movie_box").children(".wjdc_list").find(".dx_newDiv").length;
+				// console.log(dx_newDiv)
+				if (title == 2 && dx_newDiv == 0) {
+					var dx_newHtml = document.createElement('div');
+					dx_newHtml.className = "dx_newDiv";
+					dx_newHtml.innerHTML += '<li>' +
+						'<label>' +
+						'<textarea name="" cols="" rows="" class="input_wenbk btwen_text btwen_text_dx"   this.value=""" > ' + '填空题目' +
+						'</textarea>' +
+						'</label>' +
+						'</li>'
+					// console.log(dx_newHtml)
+					$(this).parent(".bjqxwc_box").parent(".dx_box").parent(".movie_box").children(".wjdc_list").append(dx_newHtml)
+				} else {
+
+				}
+
 				var jcxxxx = $(this).parent(".bjqxwc_box").parent(".dx_box");
 				//编辑题目选项的个数
 				var bjtm_xm_length = jcxxxx.find(".title_itram").children(".kzjxx_iteam").length;
@@ -362,7 +381,7 @@
 				//赋值文本框 
 				//题目标题
 				var texte_bt_val_bj = jcxxxx.find(".btwen_text").val();
-				console.log(texte_bt_val_bj)
+				// console.log(texte_bt_val_bj)
 				jcxxxx.parent(".movie_box").children(".wjdc_list").children("li").eq(0).find(".tm_btitlt").children(".btwenzi").text(texte_bt_val_bj);
 				//遍历题目项目的文字
 				var bjjs_bj = 0;
@@ -385,13 +404,111 @@
 
 				//清除	 
 				$(this).parent(".bjqxwc_box").parent(".dx_box").empty().hide();
+				// alert("修改完成记得重新提交")
 
 			});
+			// 提交问卷
+			$(".button").click(function () {
+				// console.log($(".yd_box").find(".movie_box").length);
+				var a_newDx_array = [];
+				var a_newDuox_array = [];
+				var a_newFill_blank_array = [];
+				$(".yd_box").find(".movie_box").each(function () {
+					// console.log($(this).attr("name"))
+					// 单选
+					if ($(this).attr("name") == '2') {
+						var dx_forLi = $(this).children(".wjdc_list").children("li");
+						// console.log(dx_forLi.length)
+						var newDx_array = [];
+						newDx_array.push({ typex: 2, subject: dx_forLi.eq(0).children(".tm_btitlt").children(".btwenzi").text() })
+						for (var i = 1; i < dx_forLi.length; i++) {
+							// console.log(dx_forLi[0].children(".tm_btitlt").children(".btwenzi").text())
+							// console.log(dx_forLi.eq(i).children(".tm_btitlt").children(".btwenzi").text());
+							// console.log(dx_forLi.eq(i).find("span").text())
+							var newDx_obj = {};
 
+							newDx_array.push({ typex: 2, answer: dx_forLi.eq(i).find("span").text() });
 
+							// console.log($(this).children(".wjdc_list").children("li").eq(0).children(".tm_btitlt").children(".btwenzi").text())
+							// console.log($(this).children(".wjdc_list").children("li").eq(0+1).find("span").text())
+						}
+						// console.log(newDx_array)
+						a_newDx_array.push(newDx_array)
 
+					};
+					// 多选
+					if ($(this).attr("name") == '3') {
+						var dx_forLi = $(this).children(".wjdc_list").children("li");
+						// console.log(dx_forLi.length)
+						var newDuox_array = [];
+						newDuox_array.push({ typex: 3, subject: dx_forLi.eq(0).children(".tm_btitlt").children(".btwenzi").text() })
+						for (var i = 1; i < dx_forLi.length; i++) {
+							// console.log(dx_forLi[0].children(".tm_btitlt").children(".btwenzi").text())
+							// console.log(dx_forLi.eq(i).children(".tm_btitlt").children(".btwenzi").text());
+							// console.log(dx_forLi.eq(i).find("span").text())
+							var newDx_obj = {};
 
+							newDuox_array.push({ typex: 3, answer: dx_forLi.eq(i).find("span").text() });
 
+							// console.log($(this).children(".wjdc_list").children("li").eq(0).children(".tm_btitlt").children(".btwenzi").text())
+							// console.log($(this).children(".wjdc_list").children("li").eq(0+1).find("span").text())
+						}
+						a_newDuox_array.push(newDuox_array)
+						// console.log(newDuox_array)
+					};
+					// 填空
+					if ($(this).attr("name") == '4') {
+						var dx_forLi = $(this).children(".wjdc_list").children("li");
+						// console.log(dx_forLi.length)
+						var newFill_blank_array = [];
+						newFill_blank_array.push({ typex: 4, subject: dx_forLi.eq(0).children(".tm_btitlt").children(".btwenzi").text() })
+						// console.log(newFill_blank_array)
+						a_newFill_blank_array.push(newFill_blank_array)
+					}
+
+				});
+				var mergeUp = [];
+				var questionnaire = {};
+				var aaa = {};
+				var questionnaireTit = $(".questionnaireTit").val();
+				// console.log(questionnaireTit)
+				var questionnaireSummary = $(".questionnaireSummary").val();
+				// console.log(questionnaireSummary);
+				questionnaire.title = questionnaireTit;
+				questionnaire.summary = questionnaireSummary;
+				mergeUp.push(a_newDx_array, a_newDuox_array, a_newFill_blank_array);
+				// console.log(mergeUp)
+				aaa.questionnaire = questionnaire;
+				aaa.qnranswerList = mergeUp;
+				console.log(aaa)
+				// console.log(questionnaireTit == "")
+				if (questionnaireTit == "") {
+					alert("请填写问卷标题")
+				} else if (questionnaireSummary == "") {
+					alert("请填写问卷简介")
+				} else if (mergeUp[0].length == 0 && mergeUp[1].length == 0 && mergeUp[2].length == 0) {
+					alert("请先添加一个问卷再提交")
+				} else {
+					$.ajax({
+						type: "POST",
+						url: 'http:192.168.10.46/questionnaire/addQuestionnaire',
+						data: JSON.stringify({
+							pageNumber: 1,
+							pageSize: 12
+						}),
+						async: false,
+						dataType: "json",
+						contentType: "application/json;charset=utf-8",
+						success: function (res) {
+						},
+						error: function (e) {
+							console.log(e);
+						}
+					});
+
+				}
+
+			})
 
 		});
 
@@ -400,11 +517,19 @@
 
 <body>
 	<div class=" all_660">
+		<div class="questionnaireTit_box">
+			<p>问卷标题</p>
+			<input type="text" class="questionnaireTit">
+		</div>
+		<div class="questionnaireSummary_box">
+			<p>问卷简介</p>
+			<textarea name="" id="" cols="30" rows="10" class="questionnaireSummary"></textarea>
+		</div>
 		<div class="yd_box">
-			<div class="movie_box">
+			<div class="movie_box" name='2'>
 				<ul class="wjdc_list">
 					<li>
-						<div class="tm_btitlt"><i class="nmb"></i><i class="btwenzi">你有多久的公务员资历？</i></div>
+						<div class="tm_btitlt"><i class="nmb"></i><i class="btwenzi">你有多久的程序员资历？</i></div>
 					</li>
 					<li>
 						<label>
@@ -429,35 +554,25 @@
 				</ul>
 				<div class="dx_box" data-t="0"></div>
 			</div>
-			<div class="movie_box">
+			<div class="movie_box" name='2'>
 				<ul class="wjdc_list">
 					<li>
-						<div class="tm_btitlt"><i class="nmb"></i><i class="btwenzi">你有多久的公务员资历？</i></div>
+						<div class="tm_btitlt"><i class="nmb"></i><i class="btwenzi">你是男生还是女生</i></div>
 					</li>
 					<li>
 						<label>
 							<input name="a" type="radio" value="">
-							<span>0-6年</span></label>
+							<span>男</span></label>
 					</li>
 					<li>
 						<label>
 							<input name="a" type="radio" value="">
-							<span>4-8年</span></label>
-					</li>
-					<li>
-						<label>
-							<input name="a" type="radio" value="">
-							<span>1-20年</span></label>
-					</li>
-					<li>
-						<label>
-							<input name="a" type="radio" value="">
-							<span>2年以上</span></label>
+							<span>女</span></label>
 					</li>
 				</ul>
 				<div class="dx_box" data-t="0"></div>
 			</div>
-			<div class="movie_box">
+			<div class="movie_box" name='3'>
 				<ul class="wjdc_list">
 					<li>
 						<div class="tm_btitlt"><i class="nmb"></i><i class="btwenzi">对目前的工作哪方面不满意？</i><span
@@ -481,7 +596,7 @@
 				</ul>
 				<div class="dx_box" data-t="1"></div>
 			</div>
-			<div class="movie_box">
+			<div class="movie_box" name='4'>
 				<ul class="wjdc_list">
 					<li>
 						<div class="tm_btitlt"><i class="nmb"></i> <i class="btwenzi">任务多、压力大任务多、压力大任务多、压力大？</i><span
@@ -489,7 +604,7 @@
 					</li>
 					<li>
 						<label>
-							<textarea name="" cols="" rows="" class="input_wenbk btwen_text btwen_text_dx"
+							<textarea name="" cols="" rows="" class="input_wenbk btwen_text btwen_text_tk"
 								onblur="if(!this.value)this.value='填空题目'"
 								onclick="if(this.value&&this.value=='填空题目' )  this.value=''"></textarea>
 						</label>
@@ -636,6 +751,7 @@
 						href="javascript:void(0);" class="swcbj_but"> 完成修改</a> </div>
 			</div>
 		</div>
+		<div class="button">提交问卷</div>
 	</div>
 </body>
 
