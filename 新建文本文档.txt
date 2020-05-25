@@ -494,8 +494,7 @@
 						url: 'http:192.168.10.46/questionnaire/addQuestionnaire',
 						data: JSON.stringify({
 							pageNumber: 1,
-							pageSize: 12,
-							qnrquestionList:aaa
+							pageSize: 12
 						}),
 						async: false,
 						dataType: "json",
